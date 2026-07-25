@@ -38,8 +38,7 @@ const Hero = () => {
         pointerEvents: 'none',
       }} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-        style={{ position: 'relative', zIndex: 1, width: '100%' }}>
+      <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 clamp(1rem, 4vw, 2rem)', textAlign: 'center', position: 'relative', zIndex: 1, width: '100%' }}>
 
         {/* Badge */}
         <div style={{ marginBottom: '1.25rem', ...anim(0) }}>
