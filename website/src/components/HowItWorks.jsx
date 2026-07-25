@@ -37,7 +37,7 @@ const HowItWorks = () => {
 
   return (
     <section id="howitworks" ref={ref} style={{ backgroundColor: '#0B1426', padding: '5rem 0' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 clamp(1rem, 4vw, 2rem)' }}>
 
         <div style={{ textAlign: 'center', marginBottom: '3rem', ...anim(0) }}>
           <span style={{ color: '#F59E0B', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: '0.6rem' }}>
