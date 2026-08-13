@@ -6,6 +6,7 @@ import HowItWorks from './components/HowItWorks.jsx'
 import MyWork from './components/MyWork.jsx'
 import Contacts from './components/Contacts.jsx'
 import Footer from './components/Footer.jsx'
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <MyWork />
       <Contacts />
       <Footer />
+      <Analytics />
     </div>
   )
 }
