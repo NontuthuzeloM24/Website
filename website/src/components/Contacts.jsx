@@ -20,13 +20,11 @@ const Contacts = () => {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom >= 0) {
       setVisible(true);
       return;
     }
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
@@ -140,20 +138,28 @@ const Contacts = () => {
               onBlur={() => setFocused(null)}
             />
           </div>
+
           <div style={anim(0.28)}>
             <input
               type="email"
+              name="email"
               placeholder="Your Email"
               required
+              value={formData.email}
+              onChange={handleChange}
               style={inputStyle("email")}
               onFocus={() => setFocused("email")}
               onBlur={() => setFocused(null)}
             />
           </div>
+
           <div style={anim(0.41)}>
             <textarea
+              name="message"
               placeholder="Your Message"
               required
+              value={formData.message}
+              onChange={handleChange}
               style={{
                 ...inputStyle("message"),
                 height: "9rem",
@@ -163,30 +169,71 @@ const Contacts = () => {
               onBlur={() => setFocused(null)}
             />
           </div>
+
+          {status === "success" && (
+            <div
+              style={{
+                backgroundColor: "rgba(74,222,128,0.1)",
+                border: "1px solid rgba(74,222,128,0.3)",
+                color: "#4ADE80",
+                borderRadius: "10px",
+                padding: "0.85rem 1rem",
+                fontSize: "0.95rem",
+                textAlign: "center",
+              }}
+            >
+              ✓ Message sent! I'll get back to you soon.
+            </div>
+          )}
+
+          {status === "error" && (
+            <div
+              style={{
+                backgroundColor: "rgba(248,113,113,0.1)",
+                border: "1px solid rgba(248,113,113,0.3)",
+                color: "#F87171",
+                borderRadius: "10px",
+                padding: "0.85rem 1rem",
+                fontSize: "0.95rem",
+                textAlign: "center",
+              }}
+            >
+              ✗ Something went wrong. Please try again.
+            </div>
+          )}
+
           <div style={anim(0.54)}>
             <button
               type="submit"
+              disabled={status === "sending"}
               onMouseEnter={() => setBtnHovered(true)}
               onMouseLeave={() => setBtnHovered(false)}
               style={{
                 width: "100%",
-                background: "linear-gradient(135deg, #4F8EF7, #3B7DDD)",
+                background:
+                  status === "sending"
+                    ? "rgba(79,142,247,0.5)"
+                    : "linear-gradient(135deg, #4F8EF7, #3B7DDD)",
                 color: "#fff",
                 border: "none",
                 padding: "0.9rem 2rem",
                 borderRadius: "10px",
                 fontWeight: 700,
                 fontSize: "1rem",
-                cursor: "pointer",
+                cursor: status === "sending" ? "not-allowed" : "pointer",
                 fontFamily: "inherit",
-                boxShadow: btnHovered
-                  ? "0 8px 28px rgba(79,142,247,0.5)"
-                  : "0 4px 20px rgba(79,142,247,0.35)",
-                transform: btnHovered ? "translateY(-2px)" : "translateY(0)",
-                transition: "transform 0.2s, box-shadow 0.2s",
+                boxShadow:
+                  btnHovered && status !== "sending"
+                    ? "0 8px 28px rgba(79,142,247,0.5)"
+                    : "0 4px 20px rgba(79,142,247,0.35)",
+                transform:
+                  btnHovered && status !== "sending"
+                    ? "translateY(-2px)"
+                    : "translateY(0)",
+                transition: "transform 0.2s, box-shadow 0.2s, background 0.2s",
               }}
             >
-              Get in Touch →
+              {status === "sending" ? "Sending..." : "Get in Touch →"}
             </button>
           </div>
         </form>
