@@ -2,23 +2,23 @@ import React, { useState, useEffect, useRef } from "react";
 
 const projects = [
   {
-    title: "kanban Task Manager",
+    title: 'kanban Task Manager',
     description:
-      "A web app for managing tasks and projects with a kanban board interface.",
-    image: "/assets/kanban-task.png",
-    link: "https://nontuthuzelo-mtolo-jslpp.netlify.app/",
+      'A web app for managing tasks and projects with a kanban board interface.',
+    image: '/assets/kanban-task.png',
+    link: 'https://nontuthuzelo-mtolo-jslpp.netlify.app/',
   },
   {
-    title: "Podcast App",
-    description: "A web app for streaming and managing podcasts.",
-    image: "/assets/apppodcast.png",
-    link: "https://nonmto-25498-fto-2506-group-b-nontu.vercel.app/",
+    title: 'Podcast App',
+    description: 'A web app for streaming and managing podcasts.',
+    image: '/assets/apppodcast.png',
+    link: 'https://nonmto-25498-fto-2506-group-b-nontu.vercel.app/',
   },
   {
-    title: "Resume Project",
-    description: "An online resume for professionals.",
-    image: "/assets/resumeproject.png",
-    link: "https://nontuthuzelo-mtolo-sdf-resume-project.netlify.app/",
+    title: 'Resume Project',
+    description: 'An online resume for professionals.',
+    image: '/assets/resumeproject.png',
+    link: 'https://nontuthuzelo-mtolo-sdf-resume-project.netlify.app/',
   },
 ];
 
