@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 
+const SERVICE_ID  = "service_nnufaks";
+const TEMPLATE_ID = "template_manip69";
+const PUBLIC_KEY  = "A_M2bSQ1dXYU9z17v";
+
 const Contacts = () => {
   const [visible, setVisible] = useState(false);
   const [focused, setFocused] = useState(null);
