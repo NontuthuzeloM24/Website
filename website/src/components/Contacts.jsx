@@ -118,14 +118,17 @@ const Contacts = () => {
           </p>
         </div>
 
-        <form style={{ display: "grid", gap: "1.25rem" }}>
+        <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
           <div style={anim(0.15)}>
             <input
               type="text"
+              name="name"
               placeholder="Your Name"
               required
-              style={inputStyle("name")}
-              onFocus={() => setFocused("name")}
+              value={formData.name}
+              onChange={handleChange}
+              style={inputStyle('name')}
+              onFocus={() => setFocused('name')}
               onBlur={() => setFocused(null)}
             />
           </div>
