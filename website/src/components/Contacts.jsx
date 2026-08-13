@@ -8,6 +8,8 @@ const Contacts = () => {
   const [visible, setVisible] = useState(false);
   const [focused, setFocused] = useState(null);
   const [btnHovered, setBtnHovered] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState({ loading: false, success: null, error: null });
   const ref = useRef(null);
 
   useEffect(() => {
