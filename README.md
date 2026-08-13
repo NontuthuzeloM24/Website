@@ -20,7 +20,7 @@ header for a polished, modern feel.
 
 ## 🛠️ Built with
 
-React · Vite · Tailwind CSS v4
+React · Vite 
 
 
 ## 📬 Find me
