@@ -71,6 +71,7 @@ const Contacts = () => {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
+          to_email: "mtolonontuthuzelo4@gmail.com"
         },
         { publicKey: PUBLIC_KEY },
       );
