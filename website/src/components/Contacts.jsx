@@ -52,6 +52,33 @@ const Contacts = () => {
     boxSizing: "border-box",
   });
 
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name:  formData.name,
+          from_email: formData.email,
+          message:    formData.message,
+        },
+        { publicKey: PUBLIC_KEY }
+      );
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
+  };
+
   return (
     <section
       id="contact"
