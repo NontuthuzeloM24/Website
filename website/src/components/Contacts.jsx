@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
-const SERVICE_ID  = "service_nnufaks";
+const SERVICE_ID = "service_nnufaks";
 const TEMPLATE_ID = "template_manip69";
-const PUBLIC_KEY  = "A_M2bSQ1dXYU9z17v";
+const PUBLIC_KEY = "A_M2bSQ1dXYU9z17v";
 
 const Contacts = () => {
   const [visible, setVisible] = useState(false);
   const [focused, setFocused] = useState(null);
   const [btnHovered, setBtnHovered] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState({ loading: false, success: null, error: null });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState(null);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -53,29 +58,29 @@ const Contacts = () => {
   });
 
   const handleChange = (e) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('sending');
+    setStatus("sending");
 
     try {
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
         {
-          from_name:  formData.name,
+          from_name: formData.name,
           from_email: formData.email,
-          message:    formData.message,
+          message: formData.message,
         },
-        { publicKey: PUBLIC_KEY }
+        { publicKey: PUBLIC_KEY },
       );
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
     } catch (err) {
       console.error(err);
-      setStatus('error');
+      setStatus("error");
     }
   };
 
@@ -118,7 +123,10 @@ const Contacts = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "grid", gap: "1.25rem" }}
+        >
           <div style={anim(0.15)}>
             <input
               type="text"
@@ -127,8 +135,8 @@ const Contacts = () => {
               required
               value={formData.name}
               onChange={handleChange}
-              style={inputStyle('name')}
-              onFocus={() => setFocused('name')}
+              style={inputStyle("name")}
+              onFocus={() => setFocused("name")}
               onBlur={() => setFocused(null)}
             />
           </div>
